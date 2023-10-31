@@ -1,21 +1,24 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/blog', function () {
-    return 'List blogs';
+    // get database
+    $post = [
+        ['id' => 1, 'title' => 'PHP', 'slug' => 'php'],
+        ['id' => 2, 'title' => 'Laravel', 'slug' => 'laravel']
+    ];
+
+    return view('blog', ['posts' => $post]);
 });
 
 Route::get('/blog/{slug}', function ($slug) {
     // Get data database
-    return $slug;
-});
+    $post = $slug;
+    return view('post', ['post' => $post]);
 
-Route::get('/buscar', function (Request $request) {
-    return $request->all();
 });
