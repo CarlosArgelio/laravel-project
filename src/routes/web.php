@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/blog', function () {
     // get database
@@ -14,11 +14,11 @@ Route::get('/blog', function () {
     ];
 
     return view('blog', ['posts' => $post]);
-});
+})->name('blog');
 
 Route::get('/blog/{slug}', function ($slug) {
     // Get data database
     $post = $slug;
     return view('post', ['post' => $post]);
 
-});
+})->name('post');
